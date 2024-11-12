@@ -1,6 +1,11 @@
-import { NavBar, Profile } from '../components';
+import { NavBar, Profile, ModalInfo } from '../components';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
-export default function Shedule() {
+export default function Schedule() {
+
+  const [showModal, setShowModal] = useState(false);
+
     return (
       <div class="mx-6 mt-12 text-sm sm:mx-24 sm:text-base">
         <Profile />
@@ -19,7 +24,7 @@ export default function Shedule() {
               <h1 class="border-b-2 border-rtu-green">Komentārs</h1>
 
               <h1 class="border-r-2 border-b-2 border-rtu-green">10:15-11:50</h1>
-              <h2 class="border-r-2 border-b-2 border-rtu-green"><b>Lekc.</b>Datoru organizācija un asambleri</h2>
+              <h2 class="border-r-2 border-b-2 border-rtu-green"><b>Lekc. </b>Datoru organizācija un asambleri</h2>
               <h1 class="border-r-2 border-b-2 border-rtu-green">Āze. 12-102</h1>
               <h1 class="border-r-2 border-b-2 border-rtu-green">Uldis Sukovskis</h1>
               <h1 class="border-r-2 border-b-2 border-rtu-green"></h1>
@@ -28,13 +33,23 @@ export default function Shedule() {
               <h1 class="border-b-2 border-rtu-green"></h1>
 
               <h1 class="border-r-2 border-rtu-green">12:30-14:05</h1>
-              <h2 class="border-r-2 border-rtu-green"><b>Lekc.</b>Sistēmu analīze un zināšanu iegūšana</h2>
+              <h2 class="border-r-2 border-rtu-green"><b>Lekc. </b>Sistēmu analīze un zināšanu iegūšana</h2>
               <h1 class="border-r-2 border-rtu-green">Āze. 12-102</h1>
               <h1 class="border-r-2 border-rtu-green">Mārīte Kirikova</h1>
               <h1 class="border-r-2 border-rtu-green"></h1>
               <h1 class="border-r-2 border-rtu-green"></h1>
               <h1 class="border-r-2 border-rtu-green"></h1>
               <h1 class=""></h1>
+          </div>
+
+          <div class="sm:flex mt-6">
+            <button onClick={() => setShowModal(true)} class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises informāciju</button>
+            {showModal && createPortal(
+              <ModalInfo onClose={() => setShowModal(false)} />,
+              document.body
+              )}
+            <button class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt tēmu</button>
+            <button class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt atzīmi</button>
           </div>
       </div>
     );

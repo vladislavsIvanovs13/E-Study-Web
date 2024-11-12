@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 h1 {
-    font-weight: bold;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    @apply font-bold py-3;
 }
 
 h2 {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    @apply py-3;
 }
+
+label {
+    @apply text-rtu-green;
+}
+
+input[type=text] {
+    @apply border-2 border-rtu-green rounded-md w-full py-1 px-2 mb-4;
+  }
