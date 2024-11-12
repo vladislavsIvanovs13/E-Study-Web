@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Diary from './pages/Diary';
+import Schedule from './pages/Schedule';
 import Campus from './pages/Campus';
 import Professors from './pages/Professors';
 import './index.css';
@@ -12,7 +12,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Diary />,
+    element: <Schedule />,
     // TODO: Create error page
   },
   {
