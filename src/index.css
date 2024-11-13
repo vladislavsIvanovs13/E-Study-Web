@@ -17,3 +17,11 @@ label {
 input[type=text] {
     @apply border-2 border-rtu-green rounded-md w-full py-1 px-2 mb-4;
   }
+
+textarea {
+    @apply border-2 border-rtu-green rounded-md w-full py-1 px-2 mb-4 resize-none;
+}
+
+select {
+    @apply border-2 border-rtu-green rounded-md w-full py-1 px-2 mb-4
+}

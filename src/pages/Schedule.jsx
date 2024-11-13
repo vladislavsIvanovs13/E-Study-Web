@@ -1,10 +1,12 @@
-import { NavBar, Profile, ModalInfo } from '../components';
+import { NavBar, Profile, ModalInfo, ModalSubject, ModalGrade } from '../components';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export default function Schedule() {
 
-  const [showModal, setShowModal] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
+  const [showSubject, setShowSubject] = useState(false);
+  const [showGrade, setShowGrade] = useState(false);
 
     return (
       <div class="mx-6 mt-12 text-sm sm:mx-24 sm:text-base">
@@ -43,13 +45,21 @@ export default function Schedule() {
           </div>
 
           <div class="sm:flex mt-6">
-            <button onClick={() => setShowModal(true)} class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises informāciju</button>
-            {showModal && createPortal(
-              <ModalInfo onClose={() => setShowModal(false)} />,
+            <button onClick={() => setShowInfo(true)} class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises informāciju</button>
+            {showInfo && createPortal(
+              <ModalInfo onClose={() => setShowInfo(false)} />,
               document.body
               )}
-            <button class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt tēmu</button>
-            <button class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt atzīmi</button>
+            <button onClick={() => setShowSubject(true)} class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt tēmu</button>
+            {showSubject && createPortal(
+              <ModalSubject onClose={() => setShowSubject(false)} />,
+              document.body
+              )}
+            <button onClick={() => setShowGrade(true)} class="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt atzīmi</button>
+            {showGrade && createPortal(
+              <ModalGrade onClose={() => setShowGrade(false)} />,
+              document.body
+              )}
           </div>
       </div>
     );
