@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -25,35 +26,60 @@ public class EmployeeService {
 
     @Transactional
     public void addEmployee(EmployeeCourseDTO employee) {
-        Course addedCourse = new Course();
-        addedCourse.setTitle(employee.getTitle());
+        Employee oldEmployee = employeeRepository.findByEmployee(employee.getEmployee()).orElse(null);
+        Course oldCourse = courseRepository.findByTitle(employee.getTitle()).orElse(null);
 
-        Employee addedEmployee = new Employee();
-        addedEmployee.setEmployee(employee.getEmployee());
-        addedEmployee.setStructuralUnit(employee.getStructuralUnit());
-        addedEmployee.setRoom(employee.getRoom());
-        addedEmployee.setEmail(employee.getEmail());
+        if (oldEmployee != null && oldCourse == null) {
+            Course courseToAdd = new Course();
+            courseToAdd.setTitle(employee.getTitle());
 
-        if (addedEmployee.getCourses() == null) {
-            List<Course> courses = new ArrayList<>();
-            courses.add(addedCourse);
-            addedEmployee.setCourses(courses);
+            updateEmployeeCourseTable(oldEmployee, courseToAdd);
         }
 
-        if (addedCourse.getEmployees() == null) {
-            List<Employee> employees = new ArrayList<>();
-            employees.add(addedEmployee);
-            addedCourse.setEmployees(employees);
+        if (oldEmployee == null && oldCourse != null) {
+            Employee employeeToAdd = new Employee();
+            employeeToAdd.setEmployee(employee.getEmployee());
+            employeeToAdd.setStructuralUnit(employee.getStructuralUnit());
+            employeeToAdd.setRoom(employee.getRoom());
+            employeeToAdd.setEmail(employee.getEmail());
+
+            updateEmployeeCourseTable(employeeToAdd, oldCourse);
         }
 
-        employeeRepository.save(addedEmployee);
-        courseRepository.save(addedCourse);
+        if (oldEmployee == null && oldCourse == null) {
+            Course courseToAdd = new Course();
+            courseToAdd.setTitle(employee.getTitle());
+
+            Employee employeeToAdd = new Employee();
+            employeeToAdd.setEmployee(employee.getEmployee());
+            employeeToAdd.setStructuralUnit(employee.getStructuralUnit());
+            employeeToAdd.setRoom(employee.getRoom());
+            employeeToAdd.setEmail(employee.getEmail());
+
+            updateEmployeeCourseTable(employeeToAdd, courseToAdd);
+        }
+
+        if (oldEmployee != null && oldCourse != null) {
+            updateEmployeeCourseTable(oldEmployee, oldCourse);
+        }
+    }
+
+    private void updateEmployeeCourseTable(Employee employee, Course course) {
+        employee.setCourses(Optional.ofNullable(employee.getCourses()).orElse(new ArrayList<>()));
+        employee.getCourses().add(course);
+
+        course.setEmployees(Optional.ofNullable(course.getEmployees()).orElse(new ArrayList<>()));
+        course.getEmployees().add(employee);
+
+        courseRepository.save(course);
+        employeeRepository.save(employee);
     }
 
     @Transactional
     public void updateEmployee(int id, EmployeeCourseDTO updatedEmployee) {
         Employee employee = employeeRepository.findById(id).orElseThrow(
                 () -> new EmployeeNotFoundException("Employee not found: " + id));
+
         employee.setEmployee(updatedEmployee.getEmployee());
         employee.setStructuralUnit(updatedEmployee.getStructuralUnit());
         employee.setRoom(updatedEmployee.getRoom());
@@ -70,9 +96,6 @@ public class EmployeeService {
     public void deleteEmployee(int id) {
         Employee employee = employeeRepository.findById(id).orElseThrow(
                 () -> new EmployeeNotFoundException("Employee not found: " + id));
-        Course course = employee.getCourses().getFirst();
-
         employeeRepository.delete(employee);
-        courseRepository.delete(course);
     }
 }
