@@ -13,18 +13,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "courses")
-public class Course {
+@Table(name = "marks")
+
+public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
-    private String title;
+    private int mark;
 
-    @ManyToMany(mappedBy = "courses")
-    private List<Employee> employees;
+    @Column
+    private String comment;
 
-    @OneToMany(mappedBy = "course")
-    private List<Class> classes;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }
