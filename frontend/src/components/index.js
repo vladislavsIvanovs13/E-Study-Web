@@ -5,3 +5,4 @@ export { default as ModalSubject } from './Subject';
 export { default as ModalGrade } from './Grade';
 export { default as ModalAdd } from './Add';
 export { default as ModalDelete} from './Delete';
+export { default as ModalEdit} from './Edit';

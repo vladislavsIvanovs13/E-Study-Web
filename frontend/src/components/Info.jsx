@@ -20,7 +20,7 @@ export default function ModalInfo({ onClose }) {
           </div>
           <div className="flex justify-between mt-6">
             <button className="bg-rtu-green py-2 px-12 rounded-lg text-white">Saglabāt</button>
-            <button className="bg-rtu-green py-2 px-12 rounded-lg text-white" onClick={onClose}>Atcelt</button>
+            <button className="bg-[#9ebdbd] py-2 px-12 rounded-lg text-white" onClick={onClose}>Atcelt</button>
           </div>
         </div>
       </div>

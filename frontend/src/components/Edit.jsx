@@ -1,4 +1,4 @@
-export default function ModalAdd({ onClose }) {
+export default function ModalEdit({ onClose }) {
     return (
       <div onClick={onClose} className={`
       fixed inset-0 flex justify-center items-center
