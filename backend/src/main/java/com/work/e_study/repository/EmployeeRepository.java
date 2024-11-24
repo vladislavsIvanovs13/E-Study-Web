@@ -1,5 +1,6 @@
 package com.work.e_study.repository;
 
+import com.work.e_study.dto.EmployeeCourseClassDTO;
 import com.work.e_study.dto.EmployeeCourseDTO;
 import com.work.e_study.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query("SELECT new com.work.e_study.dto.EmployeeCourseDTO(" +
-            "e.id, e.employee, e.structuralUnit, e.room, e.email, c.title)" +
+            "e.id, e.employee, e.structuralUnit, e.room, e.email, c.id, c.title)" +
             "FROM Employee e JOIN e.courses c ORDER BY e.id")
     List<EmployeeCourseDTO> findAllEmployeesWithCourseTitles();
 
@@ -22,4 +23,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 //            "FROM Employee e JOIN e.courses c WHERE e.id = :id")
 //    EmployeeCourseDTO findEmployeeById(@Param("id") int id);
     Optional<Employee> findByEmployee(String employee);
+
+    @Query("SELECT new com.work.e_study.dto.EmployeeCourseClassDTO(" +
+            "cl.id, cl.time, co.title, e.employee, cl.venue)" +
+            "FROM Employee e JOIN e.courses co JOIN co.classes cl ORDER BY cl.id")
+    List<EmployeeCourseClassDTO> findVenueInfo();
 }

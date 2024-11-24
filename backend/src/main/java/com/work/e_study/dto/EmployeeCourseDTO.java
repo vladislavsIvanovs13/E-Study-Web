@@ -8,10 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeCourseDTO {
-    private int id;
+    private int employeeId;
     private String employee;
     private String structuralUnit;
     private String room;
     private String email;
+    private int courseId;
     private String title;
 }
