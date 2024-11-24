@@ -16,16 +16,16 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class EmployeeService {
+public class EmployeeCourseService {
     private EmployeeRepository employeeRepository;
     private CourseRepository courseRepository;
 
-    public List<EmployeeCourseDTO> getAllEmployees() {
+    public List<EmployeeCourseDTO> getAllEmployeeCourses() {
         return employeeRepository.findAllEmployeesWithCourseTitles();
     }
 
     @Transactional
-    public void addEmployee(EmployeeCourseDTO employee) {
+    public void addEmployeeCourse(EmployeeCourseDTO employee) {
         Employee oldEmployee = employeeRepository.findByEmployee(employee.getEmployee()).orElse(null);
         Course oldCourse = courseRepository.findByTitle(employee.getTitle()).orElse(null);
 
@@ -76,16 +76,18 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void updateEmployee(int id, EmployeeCourseDTO updatedEmployee) {
-        Employee employee = employeeRepository.findById(id).orElseThrow(
-                () -> new EmployeeNotFoundException("Employee not found: " + id));
+    public void updateEmployeeCourse(int employeeId, int courseId, EmployeeCourseDTO updatedEmployee) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+                () -> new EmployeeNotFoundException("Employee not found: " + employeeId));
 
         employee.setEmployee(updatedEmployee.getEmployee());
         employee.setStructuralUnit(updatedEmployee.getStructuralUnit());
         employee.setRoom(updatedEmployee.getRoom());
         employee.setEmail(updatedEmployee.getEmail());
 
-        Course course = employee.getCourses().getFirst();
+        Course course = employee.getCourses().stream()
+                        .filter(c -> c.getId() == courseId)
+                        .findFirst().orElseThrow();
         course.setTitle(updatedEmployee.getTitle());
 
         employeeRepository.save(employee);
@@ -93,9 +95,14 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void deleteEmployee(int id) {
-        Employee employee = employeeRepository.findById(id).orElseThrow(
-                () -> new EmployeeNotFoundException("Employee not found: " + id));
-        employeeRepository.delete(employee);
+    public void deleteEmployeeCourse(int employeeId, int courseId) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        Course course = courseRepository.findById(courseId).orElseThrow();
+
+        employee.getCourses().remove(course);
+        course.getEmployees().remove(employee);
+
+        employeeRepository.save(employee);
+        courseRepository.save(course);
     }
 }
