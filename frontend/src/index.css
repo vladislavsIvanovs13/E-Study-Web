@@ -25,3 +25,24 @@ textarea {
 select {
     @apply border-2 border-rtu-green rounded-md w-full py-1 px-2 mb-4
 }
+
+/*.fade-in-row {*/
+/*    opacity: 0;*/
+/*    transform: translateY(20px);*/
+/*    animation: fadeIn 0.5s ease-out forwards;*/
+/*}*/
+
+/*@keyframes fadeIn {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: translateY(20px);*/
+/*    }*/
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*}*/
+
+body {
+    overflow: scroll;
+}
