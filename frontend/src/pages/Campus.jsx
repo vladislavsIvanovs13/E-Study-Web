@@ -7,6 +7,10 @@ export default function Campus() {
         <NavBar />
         <br/>
         <p>[Ķīpsalas studentu pilsēiņa]</p>
+        <img 
+	    src="frontend/src/assets/Campus_map.png" 
+	    alt="Campus_map" 
+	    style={{ width: '660px', height: 'auto', marginTop: '20px' }} />
       </div>
     );
   }
