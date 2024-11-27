@@ -12,21 +12,24 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Schedule />,
-    // TODO: Create error page
+    element: <Schedule/>,
   },
   {
     path: "campus-plan",
-    element: <Campus />,
+    element: <Campus/>,
   },
   {
     path: "professors",
-    element: <Professors />,
+    element: <Professors/>,
   },
+  {
+    path: "professors/update/:employeeId/:courseId",
+    element: <Professors/>,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );

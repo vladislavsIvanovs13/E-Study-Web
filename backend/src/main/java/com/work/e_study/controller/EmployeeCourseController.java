@@ -18,7 +18,7 @@ public class EmployeeCourseController {
         return employeeCourseService.getAllEmployeeCourses();
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void addEmployeeCourse(@RequestBody EmployeeCourseDTO employee) {
         employeeCourseService.addEmployeeCourse(employee);
     }

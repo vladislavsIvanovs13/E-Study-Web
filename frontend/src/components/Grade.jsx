@@ -10,10 +10,10 @@ export default function ModalGrade({ onClose }) {
             <form>
               <label for="student">Students</label><br/>
               <select name="student">
-                <option value="volvo">--</option>
-                <option value="saab">221RDB123</option>
-                <option value="mercedes">211CDB112</option>
-                <option value="audi">221ROC771</option>
+                <option value="student1">--</option>
+                <option value="student2">221RDB123</option>
+                <option value="student3">211CDB112</option>
+                <option value="student4">221ROC771</option>
                 </select><br/>
               <label for="grade">Atzīme</label><br/>
               <input type="text" name="grade"></input>
