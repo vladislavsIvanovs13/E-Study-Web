@@ -13,6 +13,20 @@ export default function Schedule() {
       room: "Āze. 12-102", professor: "Uldis Sukovskis", topic: "Loops", homework: "", mark: "10", comment: "Great job"}];
   const second = [{time: "12:30-14:05", course: "Sistēmu analīze un zināšanu iegūšana",
       room: "Āze. 12-102", professor: "Mārīte Kirikova", topic: "BPMN diagrammas", homework: "", mark: "", comment: ""}];
+  const third = [{time: "12:30-14:05", course: "Datu bāzu sistēmu datu modeļi",
+      room: "Āze. 12-102", professor: "Jānis Eiduks", topic: "", homework: "", mark: "8", comment: ""}];
+  const fourth = [{time: "14:30-16:05", course: "Sistēmu teorijas metodes",
+      room: "Āze. 12-102", professor: "Sintija Petroviča-Kļaviņa", topic: "1.PD", homework: "Sagatavoties PD", mark: "iesk.", comment: ""}];
+  const fifth = [{time: "08:15-09:50", course: "Programmatūras attīstības tehnoloģijas",
+      room: "Att.", professor: "Oksana Ņikiforova", topic: "Scrum metodoloģija", homework: "", mark: "", comment: ""}];
+  const sixth = [{time: "10:15-11:50", course: "Programmatūras attīstības tehnoloģijas",
+      room: "Att.", professor: "Oksana Ņikiforova", topic: "Scrum metodoloģija", homework: "", mark: "", comment: ""}];
+  const seventh = [{time: "08:15-09:50", course: "Programmatūras izstrādes tehnoloģija",
+      room: "Āze. 12-102", professor: "Jānis Amoliņš", topic: "Programmatūras katastrofas", homework: "", mark: "", comment: ""}];
+  const eighth = [{time: "10:15-11:50", course: "Programmatūras izstrādes tehnoloģija",
+      room: "Āze. 12-103", professor: "Jānis Amoliņš", topic: "Programmatūras katastrofas", homework: "", mark: "", comment: ""}];
+  const ninth = [{time: "08:15-09:50", course: "Tehnoloģija XML elektroniskos dokumentos",
+      room: "Att.", professor: "Pāvels Rusakovs", topic: "Validācija ar XSD shēmām", homework: "", mark: "iesk.", comment: "4.darbs ieskaitīts"}];
 
   return (
       <div className="mx-6 mt-12 text-sm sm:mx-24 sm:text-base">
@@ -65,7 +79,7 @@ export default function Schedule() {
                   </tbody>
               </table>
           </div>
-          <div className="sm:flex mt-6">
+          <div className="sm:flex mt-4" style={{justifyContent: 'center'}}>
               <button onClick={() => setShowInfo(true)}
                       className="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises
                   informāciju
@@ -110,7 +124,7 @@ export default function Schedule() {
                       <th className="border-r-2 border-rtu-green">Atzīme</th>
                       <th className="border-r-2 border-rtu-green">Komentārs</th>
                   </tr>
-                  {first.map((row, index) => (
+                  {third.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -122,7 +136,7 @@ export default function Schedule() {
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.comment}</td>
                       </tr>
                   ))}
-                  {second.map((row, index) => (
+                  {fourth.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -137,7 +151,7 @@ export default function Schedule() {
                   </tbody>
               </table>
           </div>
-          <div className="sm:flex mt-6">
+          <div className="sm:flex mt-4" style={{justifyContent: 'center'}}>
               <button onClick={() => setShowInfo(true)}
                       className="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises
                   informāciju
@@ -182,7 +196,7 @@ export default function Schedule() {
                       <th className="border-r-2 border-rtu-green">Atzīme</th>
                       <th className="border-r-2 border-rtu-green">Komentārs</th>
                   </tr>
-                  {first.map((row, index) => (
+                  {fifth.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -194,7 +208,7 @@ export default function Schedule() {
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.comment}</td>
                       </tr>
                   ))}
-                  {second.map((row, index) => (
+                  {sixth.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -209,7 +223,7 @@ export default function Schedule() {
                   </tbody>
               </table>
           </div>
-          <div className="sm:flex mt-6">
+          <div className="sm:flex mt-4" style={{justifyContent: 'center'}}>
               <button onClick={() => setShowInfo(true)}
                       className="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises
                   informāciju
@@ -254,7 +268,7 @@ export default function Schedule() {
                       <th className="border-r-2 border-rtu-green">Atzīme</th>
                       <th className="border-r-2 border-rtu-green">Komentārs</th>
                   </tr>
-                  {first.map((row, index) => (
+                  {seventh.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -266,7 +280,7 @@ export default function Schedule() {
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.comment}</td>
                       </tr>
                   ))}
-                  {second.map((row, index) => (
+                  {eighth.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -281,7 +295,7 @@ export default function Schedule() {
                   </tbody>
               </table>
           </div>
-          <div className="sm:flex mt-6">
+          <div className="sm:flex mt-4" style={{justifyContent: 'center'}}>
               <button onClick={() => setShowInfo(true)}
                       className="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises
                   informāciju
@@ -326,19 +340,7 @@ export default function Schedule() {
                       <th className="border-r-2 border-rtu-green">Atzīme</th>
                       <th className="border-r-2 border-rtu-green">Komentārs</th>
                   </tr>
-                  {first.map((row, index) => (
-                      <tr className="h-[50px] fade-in-row" key={index}>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.room}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.professor}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.topic}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.homework}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.mark}</td>
-                          <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.comment}</td>
-                      </tr>
-                  ))}
-                  {second.map((row, index) => (
+                  {ninth.map((row, index) => (
                       <tr className="h-[50px] fade-in-row" key={index}>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.time}</td>
                           <td className="border-2 text-center border-rtu-green bg-[#9ebdbd] text-rtu-green mt-12">{row.course}</td>
@@ -353,7 +355,7 @@ export default function Schedule() {
                   </tbody>
               </table>
           </div>
-          <div className="sm:flex mt-6 mb-12">
+          <div className="sm:flex mt-4 mb-12" style={{justifyContent: 'center'}}>
               <button onClick={() => setShowInfo(true)}
                       className="bg-rtu-green hover:opacity-50 text-white py-2 px-4 rounded-lg mr-4">Mainīt norises
                   informāciju

@@ -2,7 +2,7 @@ export default function ModalInfo({ onClose }) {
     return (
       <div onClick={onClose} className={`
       fixed inset-0 flex justify-center items-center
-      ${open ? "visible bg-black/40" : "invisible"}
+      ${open ? "visible bg-black/15" : "invisible"}
       `}>
 
         <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-xl w-1/3 py-8 px-12">
