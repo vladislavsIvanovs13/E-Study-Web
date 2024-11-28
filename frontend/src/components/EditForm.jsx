@@ -12,6 +12,14 @@ export default function ModalEdit({ onClose }) {
   const navigate = useNavigate();
   const {employeeId, courseId} = useParams();
 
+  // todo: populate form with values from the table
+  // useEffect(() => {
+  //     axios.get(`http://localhost:8080/employees/${employeeId}/${courseId}`)
+  //         .then(response => {
+  //             setEmployeeCourses(response.data);
+  //         })
+  // }, []);
+
   const updateEmployeeCourse = async (e) => {
       if (!title || !employee || !structuralUnit || !room || !email) return;
       e.preventDefault();
