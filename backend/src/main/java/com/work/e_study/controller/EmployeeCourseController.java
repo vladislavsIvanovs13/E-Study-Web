@@ -18,6 +18,12 @@ public class EmployeeCourseController {
         return employeeCourseService.getAllEmployeeCourses();
     }
 
+    @GetMapping("/{employeeId}/{courseId}")
+    public EmployeeCourseDTO getEmployeeCourse(@PathVariable int employeeId,
+                                               @PathVariable int courseId) {
+        return employeeCourseService.getEmployeeCourse(employeeId, courseId);
+    }
+
     @PostMapping
     public void addEmployeeCourse(@RequestBody EmployeeCourseDTO employee) {
         employeeCourseService.addEmployeeCourse(employee);

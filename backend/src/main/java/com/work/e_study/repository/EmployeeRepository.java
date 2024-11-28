@@ -18,10 +18,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
             "FROM Employee e JOIN e.courses c ORDER BY e.id")
     List<EmployeeCourseDTO> findAllEmployeesWithCourseTitles();
 
-//    @Query("SELECT new com.work.e_study.dto.EmployeeCourseDTO(" +
-//            "e.id, e.employee, e.structuralUnit, e.room, e.email, c.title)" +
-//            "FROM Employee e JOIN e.courses c WHERE e.id = :id")
-//    EmployeeCourseDTO findEmployeeById(@Param("id") int id);
+    @Query("SELECT new com.work.e_study.dto.EmployeeCourseDTO(" +
+            "e.id, e.employee, e.structuralUnit, e.room, e.email, c.id, c.title)" +
+            "FROM Employee e JOIN e.courses c WHERE e.id = :employeeId AND c.id = :courseId")
+    EmployeeCourseDTO findEmployeeCourse(@Param("employeeId") int employeeId,
+                                         @Param("courseId") int courseId);
+
     Optional<Employee> findByEmployee(String employee);
 
     @Query("SELECT new com.work.e_study.dto.EmployeeCourseClassDTO(" +

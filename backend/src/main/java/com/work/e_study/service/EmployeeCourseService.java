@@ -24,6 +24,10 @@ public class EmployeeCourseService {
         return employeeRepository.findAllEmployeesWithCourseTitles();
     }
 
+    public EmployeeCourseDTO getEmployeeCourse(int employeeId, int courseId) {
+        return employeeRepository.findEmployeeCourse(employeeId, courseId);
+    }
+
     @Transactional
     public void addEmployeeCourse(EmployeeCourseDTO employee) {
         Employee oldEmployee = employeeRepository.findByEmployee(employee.getEmployee()).orElse(null);

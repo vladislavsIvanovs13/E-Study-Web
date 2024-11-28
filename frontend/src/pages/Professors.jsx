@@ -12,11 +12,11 @@ export default function Professors() {
     const navigate = useNavigate();
 
     useEffect(() => {
-    axios.get('http://localhost:8080/employees')
-        .then(response => {
-            setEmployeeCourses(response.data);
-            setLoading(false);
-        })
+        axios.get('http://localhost:8080/employees')
+            .then(response => {
+                setEmployeeCourses(response.data);
+                setLoading(false);
+            })
     }, []);
 
     const deleteEmployeeCourse = async (employeeId, courseId) => {
